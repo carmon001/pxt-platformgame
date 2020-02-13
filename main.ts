@@ -1,18 +1,68 @@
 namespace SpriteKind {
     export const object = SpriteKind.create()
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.object, function (sprite, otherSprite) {
-    info.changeScoreBy(1)
-    wario.vy += -250
-    trampo.setKind(SpriteKind.object)
-    trampo.x += Math.randomRange(-5, 5)
-    trampo.y += Math.randomRange(-5, -6)
-})
-let trampo: Sprite = null
-let wario: Sprite = null
-scene.setBackgroundColor(15)
-scene.cameraFollowSprite(wario)
-wario = sprites.create(img`
+function villain () {
+    trampo = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+f . . . . . . . . . . . . . . f 
+c f f f f f f f f f f f f f f c 
+d c c c c c c c c c c c c c c d 
+. d d d d d d d d d d d d d d . 
+. . d f . . . . . . . . . d f . 
+. . d f . . . . . . . . . d f . 
+. d f . . . . . . . . . . f d f 
+d f . . . . . . . . . . . . f d 
+`, SpriteKind.object)
+    trampo = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+f . . . . . . . . . . . . . . f 
+c f f f f f f f f f f f f f f c 
+d c c c c c c c c c c c c c c d 
+. d d d d d d d d d d d d d d . 
+. . d f . . . . . . . . . d f . 
+. . d f . . . . . . . . . d f . 
+. d f . . . . . . . . . . f d f 
+d f . . . . . . . . . . . . f d 
+`, SpriteKind.object)
+    trampo = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+f . . . . . . . . . . . . . . f 
+c f f f f f f f f f f f f f f c 
+d c c c c c c c c c c c c c c d 
+. d d d d d d d d d d d d d d . 
+. . d f . . . . . . . . . d f . 
+. . d f . . . . . . . . . d f . 
+. d f . . . . . . . . . . f d f 
+d f . . . . . . . . . . . . f d 
+`, SpriteKind.object)
+}
+function back_ground () {
+    scene.setBackgroundColor(15)
+    scene.cameraFollowSprite(wario)
+}
+function hero () {
+    wario = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 . . . 5 5 6 5 6 5 6 5 5 5 . . . 
 . . 5 5 5 5 6 5 6 5 5 5 5 5 . . 
@@ -30,61 +80,20 @@ d . b a a a a 5 5 a a a a b . d
 . . . a b . . . . . . b a . . . 
 . 7 7 7 6 . . . . . . 6 7 7 7 . 
 `, SpriteKind.Player)
-wario.ay = 999
-trampo = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-f . . . . . . . . . . . . . . f 
-c f f f f f f f f f f f f f f c 
-d c c c c c c c c c c c c c c d 
-. d d d d d d d d d d d d d d . 
-. . d f . . . . . . . . . d f . 
-. . d f . . . . . . . . . d f . 
-. d f . . . . . . . . . . f d f 
-d f . . . . . . . . . . . . f d 
-`, SpriteKind.object)
-trampo = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-f . . . . . . . . . . . . . . f 
-c f f f f f f f f f f f f f f c 
-d c c c c c c c c c c c c c c d 
-. d d d d d d d d d d d d d d . 
-. . d f . . . . . . . . . d f . 
-. . d f . . . . . . . . . d f . 
-. d f . . . . . . . . . . f d f 
-d f . . . . . . . . . . . . f d 
-`, SpriteKind.object)
-trampo = sprites.create(img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-f . . . . . . . . . . . . . . f 
-c f f f f f f f f f f f f f f c 
-d c c c c c c c c c c c c c c d 
-. d d d d d d d d d d d d d d . 
-. . d f . . . . . . . . . d f . 
-. . d f . . . . . . . . . d f . 
-. d f . . . . . . . . . . f d f 
-d f . . . . . . . . . . . . f d 
-`, SpriteKind.object)
+    wario.ay = 999
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.object, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    wario.vy += -250
+    trampo.setKind(SpriteKind.object)
+    trampo.x += Math.randomRange(-5, 5)
+    trampo.y += Math.randomRange(-5, -6)
+})
+let wario: Sprite = null
+let trampo: Sprite = null
+back_ground()
+hero()
+villain()
 game.onUpdate(function () {
     wario.x += controller.dx()
 })
